@@ -1,0 +1,14 @@
+!*
+.DS_Store
+.envrc
+*.log
+.metals
+.vscode
+env
+kubeconfig
+kubeconfig_*
+node_modules/
+oss-output
+reports
+
+!flake.nix

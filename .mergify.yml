@@ -1,0 +1,22 @@
+queue_rules:
+  - name: default
+    conditions:
+      # Conditions to get out of the queue (= merged)
+      - status-success=CI
+
+pull_request_rules:
+  - name: Automatically approve and merge Dependabot PRs
+    conditions:
+      - base=main
+      - author=dependabot[bot]
+      - status-success=CI
+      - -title~=(WIP|wip)
+      - -label~=(blocked|do-not-merge)
+      - -merged
+      - -closed
+    actions:
+      review:
+        type: APPROVE
+      queue:
+        method: squash
+        name: default
